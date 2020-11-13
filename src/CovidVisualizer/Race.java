@@ -11,6 +11,7 @@ public class Race
     public Race()
     {
         // first comment
+        // second comment
         // TODO Auto-generated constructor stub
     }
 
