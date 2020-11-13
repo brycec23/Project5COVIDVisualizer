@@ -1,5 +1,10 @@
 package CovidVisualizer;
 
+/**
+ * test
+ * @author bryce
+ *
+ */
 public class Race
 {
 
