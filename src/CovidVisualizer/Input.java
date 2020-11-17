@@ -1,9 +1,9 @@
 package CovidVisualizer;
 
-public class ProjectRunner
+public class Input
 {
 
-    public ProjectRunner()
+    public Input()
     {
         // TODO Auto-generated constructor stub
     }
