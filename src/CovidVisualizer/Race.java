@@ -6,19 +6,21 @@ package CovidVisualizer;
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
 // -- Bryce Cullen (brycec23)
+// -- Jonathan Ko (jonathancko)
 // -- TODO NAME (PID)
-// -- TODO NAME (PID)
+
 /**
- * Represents the COVID-19 Deaths and Cases for a single race in a region.
+ * Represents the COVID-19 Deaths and Cases for a single race.
  * 
  * @author Bryce Cullen (brycec23)
- * @author TODO
+ * @author Jonathan Ko (jonathancko)
  * @author TODO
  * @version 2020.11.17
- * 
  */
-public class Race
-{
+public class Race {
+    /**
+     * Fields
+     */
     private String name;
     private int numCases;
     private int numDeaths;
@@ -33,8 +35,7 @@ public class Race
      * @param numDeaths
      *            Number of COVID deaths in that race.
      */
-    public Race(String name, int numCases, int numDeaths)
-    {
+    public Race(String name, int numCases, int numDeaths) {
         this.name = name;
         this.numCases = numCases;
         this.numDeaths = numDeaths;
@@ -46,8 +47,7 @@ public class Race
      * 
      * @return Name of race.
      */
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
@@ -57,8 +57,7 @@ public class Race
      * 
      * @return Number of cases.
      */
-    public int getNumCases()
-    {
+    public int getNumCases() {
         return numCases;
     }
 
@@ -68,8 +67,7 @@ public class Race
      * 
      * @return Number of deaths.
      */
-    public int getNumDeaths()
-    {
+    public int getNumDeaths() {
         return numDeaths;
     }
 
@@ -79,8 +77,7 @@ public class Race
      * 
      * @return String representation of race.
      */
-    public String toString()
-    {
+    public String toString() {
         return ("Race: " + name + " Cases: " + numCases + " Deaths: "
             + numDeaths);
     }
