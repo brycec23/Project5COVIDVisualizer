@@ -2,10 +2,12 @@ package prj5;
 
 public class GUIWindow
 {
+    
+    LinkedList<Region> data;
 
-    public GUIWindow()
+    public GUIWindow(LinkedList<Region> data)
     {
-        // TODO Auto-generated constructor stub
+        this.data = data;
     }
 
 }

@@ -26,8 +26,9 @@ public class FileReader
      * 
      * @param fileName
      *            File to parse.
+     * @throws FileNotFoundException
      */
-    public FileReader(String fileName)
+    public FileReader(String fileName) throws FileNotFoundException
     {
         data = readFile(fileName);
         GUIWindow w = new GUIWindow(data);
@@ -46,9 +47,9 @@ public class FileReader
         races[2] = "LATINX";
         races[3] = "ASAIN";
         races[4] = "OTHER";
-        int vertCount = 0;
         while (scanner.hasNextLine())
         {
+            scanner.nextLine();
             Region r = new Region(scanner.next());
             int horizCount = 0;
             while (scanner.hasNext() && horizCount < races.length)
@@ -64,8 +65,6 @@ public class FileReader
                 r.getRaces().get(horizCount).setDeaths(scanner.nextInt());
                 horizCount++;
             }
-
-            vertCount++;
             data.add(r);
         }
         return data;
