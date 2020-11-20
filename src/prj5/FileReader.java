@@ -37,7 +37,7 @@ public class FileReader
 
     private LinkedList<Region> readFile(String file)
         throws FileNotFoundException
-    {
+    {//TODO need to account for NA being read (line 58 and line 65)
         LinkedList<Region> data = new LinkedList<Region>();
         Scanner scanner = new Scanner(new File(file));
         scanner.useDelimiter(",");
