@@ -1,9 +1,9 @@
-package CovidVisualizer;
+package prj5;
 
-public class Input
+public class GUIWindow
 {
 
-    public Input()
+    public GUIWindow()
     {
         // TODO Auto-generated constructor stub
     }

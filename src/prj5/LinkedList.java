@@ -1,4 +1,4 @@
-package CovidVisualizer;
+package prj5;
 
 // Virginia Tech Honor Code Pledge:
 //

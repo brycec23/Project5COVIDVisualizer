@@ -1,4 +1,4 @@
-package CovidVisualizer;
+package prj5;
 
 // Virginia Tech Honor Code Pledge:
 //
@@ -17,10 +17,8 @@ package CovidVisualizer;
  * @author TODO
  * @version 2020.11.17
  */
-public class Race {
-    /**
-     * Fields
-     */
+public class Race
+{
     private String name;
     private int numCases;
     private int numDeaths;
@@ -35,10 +33,9 @@ public class Race {
      * @param numDeaths
      *            Number of COVID deaths in that race.
      */
-    public Race(String name, int numCases, int numDeaths) {
+    public Race(String name)
+    {
         this.name = name;
-        this.numCases = numCases;
-        this.numDeaths = numDeaths;
     }
 
 
@@ -47,7 +44,8 @@ public class Race {
      * 
      * @return Name of race.
      */
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
@@ -57,8 +55,21 @@ public class Race {
      * 
      * @return Number of cases.
      */
-    public int getNumCases() {
+    public int getNumCases()
+    {
         return numCases;
+    }
+
+
+    /**
+     * Sets the cases for a race.
+     * 
+     * @param cases
+     *            number to set cases to.
+     */
+    public void setCases(int cases)
+    {
+        numCases = cases;
     }
 
 
@@ -67,8 +78,35 @@ public class Race {
      * 
      * @return Number of deaths.
      */
-    public int getNumDeaths() {
+    public int getNumDeaths()
+    {
         return numDeaths;
+    }
+
+
+    /**
+     * Sets the deaths for a race.
+     * 
+     * @param deaths
+     *            number to set deaths to.
+     */
+    public void setDeaths(int deaths)
+    {
+        numDeaths = deaths;
+    }
+
+
+    /**
+     * Calculates the CFR (Case Fatality Ratio)
+     * 
+     * @return CFR as a double.
+     */
+    public double calcCFR()
+    {
+        //TODO needs to account for case of "NA"
+        double CFR = 0.0;
+        CFR = numDeaths / numCases;
+        return CFR;
     }
 
 
@@ -77,7 +115,8 @@ public class Race {
      * 
      * @return String representation of race.
      */
-    public String toString() {
+    public String toString()
+    {
         return ("Race: " + name + " Cases: " + numCases + " Deaths: "
             + numDeaths);
     }
