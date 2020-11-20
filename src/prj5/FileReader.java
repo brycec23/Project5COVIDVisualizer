@@ -37,17 +37,18 @@ public class FileReader
 
     private LinkedList<Region> readFile(String file)
         throws FileNotFoundException
-    {//TODO need to account for NA being read (line 58 and line 65)
+    {
         LinkedList<Region> data = new LinkedList<Region>();
         Scanner scanner = new Scanner(new File(file));
-        scanner.useDelimiter(",");
+        scanner.useDelimiter(",|\\n|\\r");
         String[] races = new String[5];
         races[0] = "WHITE";
         races[1] = "BLACK";
         races[2] = "LATINX";
         races[3] = "ASAIN";
         races[4] = "OTHER";
-        while (scanner.hasNextLine())
+        int count = 0;
+        while (scanner.hasNextLine() && count < 6)
         {
             scanner.nextLine();
             Region r = new Region(scanner.next());
@@ -55,19 +56,37 @@ public class FileReader
             while (scanner.hasNext() && horizCount < races.length)
             {
                 Race tempRace = new Race(races[horizCount]);
-                tempRace.setCases(scanner.nextInt());
+                String curr = scanner.next();
+                if (curr.equals("NA"))
+                {
+                    tempRace.setCases(-1);
+                }
+                else
+                {
+                    tempRace.setCases(Integer.parseInt(curr));
+                }
                 r.addRaceData(tempRace);
                 horizCount++;
             }
             horizCount = 0;
-            while (scanner.hasNext())
+            while (scanner.hasNext() && horizCount < races.length)
             {
-                r.getRaces().get(horizCount).setDeaths(scanner.nextInt());
+                String curr = scanner.next();
+                if (curr.equals("NA"))
+                {
+                    r.getRaces().get(horizCount).setDeaths(-1);
+                }
+                else
+                {
+                    r.getRaces().get(horizCount).setDeaths(Integer.parseInt(
+                        curr));
+                }
                 horizCount++;
             }
             data.add(r);
+            count++;
         }
+        scanner.close();
         return data;
     }
-
 }

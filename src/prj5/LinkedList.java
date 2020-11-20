@@ -6,14 +6,10 @@ package prj5;
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
 // -- Bryce Cullen (brycec23)
-// -- TODO NAME (PID)
-// -- TODO NAME (PID)
 /**
  * Represents a singly linked list.
  * 
  * @author Bryce Cullen (brycec23)
- * @author TODO
- * @author TODO
  * @version 2020.11.17
  * 
  * @param <T>
