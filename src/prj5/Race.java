@@ -99,7 +99,7 @@ public class Race implements Comparable<Race> {
             throw new ArithmeticException();
         }
         double CFR = 0.0;
-        CFR = (double)numDeaths / (double)numCases;
+        CFR = ((double)numDeaths / (double)numCases) * 100;
         return CFR;
     }
 

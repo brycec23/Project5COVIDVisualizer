@@ -102,7 +102,7 @@ public class RaceTest extends TestCase {
 
         race.setCases(100);
         race.setDeaths(50);
-        assertEquals(0.5, race.calcCFR(), 0.01);
+        assertEquals(50.0, race.calcCFR(), 0.01);
     }
 
 
@@ -130,7 +130,7 @@ public class RaceTest extends TestCase {
     public void testToString() {
         race.setCases(100);
         race.setDeaths(50);
-        assertEquals("White: 100 cases, 0.5 CFR", race.toString());
+        assertEquals("White: 100 cases, 50.0 CFR", race.toString());
         race.setCases(-1);
         race.setDeaths(-1);
         assertEquals("White: -1 cases, -1.0 CFR", race.toString());

@@ -1,5 +1,7 @@
 package prj5;
 
+import student.TestCase;
+
 // Virginia Tech Honor Code Pledge:
 //
 // As a Hokie, I will conduct myself with honor and integrity at all times.
@@ -17,17 +19,26 @@ package prj5;
  * @author TODO
  * @version 2020.11.21
  */
-public class RegionTest {
+public class RegionTest extends TestCase {
     /**
      * Fields
      */
     private Region region;
+    private Region region1;
+    private Race race;
 
     /**
      * Sets up the test class for accurate testing
      */
     public void setUp() {
         region = new Region("VA");
+        
+        race = new Race("White");
+        race.setCases(100);
+        race.setDeaths(50);
+        
+        region1 = new Region("DC");
+        region1.addRaceData(race);
     }
 
 
@@ -35,7 +46,7 @@ public class RegionTest {
      * Makes sure the method getName works as expected
      */
     public void testGetName() {
-
+        assertEquals("VA", region.getName());
     }
 
 
@@ -43,7 +54,7 @@ public class RegionTest {
      * Makes sure the method addRaceData works as expected
      */
     public void testAddRaceData() {
-
+        
     }
 
 
@@ -51,7 +62,7 @@ public class RegionTest {
      * Makes sure the method getRaces works as expected
      */
     public void testGetRaces() {
-
+        
     }
 
 
@@ -59,7 +70,7 @@ public class RegionTest {
      * Makes sure the method getDeaths works as expected
      */
     public void testGetDeaths() {
-
+        assertEquals(50, region1.getDeaths(race));
     }
 
 
@@ -67,7 +78,7 @@ public class RegionTest {
      * Makes sure the method getCases works as expected
      */
     public void testGetCases() {
-
+        assertEquals(100, region1.getCases(race));
     }
 
 
