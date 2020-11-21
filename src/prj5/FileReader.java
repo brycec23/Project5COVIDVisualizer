@@ -10,15 +10,16 @@ import java.util.Scanner;
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
 // -- Bryce Cullen (brycec23)
+// -- Jonathan Ko (jonathancko)
 /**
  * Parses a CSV file and creates a LinkedList of Regions with Races containing
  * the data.
  * 
  * @author Bryce Cullen (brycec23)
+ * @author Jonathan Ko (jonathancko)
  * @version 2020.11.20
  */
-public class FileReader
-{
+public class FileReader {
 
     private LinkedList<Region> data;
 
@@ -30,8 +31,7 @@ public class FileReader
      * @throws FileNotFoundException
      *             if file is not found.
      */
-    public FileReader(String fileName) throws FileNotFoundException
-    {
+    public FileReader(String fileName) throws FileNotFoundException {
         data = readFile(fileName);
         @SuppressWarnings("unused")
         GUIWindow w = new GUIWindow(data);
@@ -39,8 +39,7 @@ public class FileReader
 
 
     private LinkedList<Region> readFile(String file)
-        throws FileNotFoundException
-    {
+        throws FileNotFoundException {
         LinkedList<Region> data = new LinkedList<Region>();
         Scanner scanner = new Scanner(new File(file));
         scanner.useDelimiter(",|\\n|\\r");
@@ -51,36 +50,29 @@ public class FileReader
         races[3] = "ASAIN";
         races[4] = "OTHER";
         int count = 0;
-        while (scanner.hasNextLine() && count < 6)
-        {
+        while (scanner.hasNextLine() && count < 6) {
             scanner.nextLine();
             Region r = new Region(scanner.next());
             int horizCount = 0;
-            while (scanner.hasNext() && horizCount < races.length)
-            {
+            while (scanner.hasNext() && horizCount < races.length) {
                 Race tempRace = new Race(races[horizCount]);
                 String curr = scanner.next();
-                if (curr.equals("NA"))
-                {
+                if (curr.equals("NA")) {
                     tempRace.setCases(-1);
                 }
-                else
-                {
+                else {
                     tempRace.setCases(Integer.parseInt(curr));
                 }
                 r.addRaceData(tempRace);
                 horizCount++;
             }
             horizCount = 0;
-            while (scanner.hasNext() && horizCount < races.length)
-            {
+            while (scanner.hasNext() && horizCount < races.length) {
                 String curr = scanner.next();
-                if (curr.equals("NA"))
-                {
+                if (curr.equals("NA")) {
                     r.getRaces().get(horizCount).setDeaths(-1);
                 }
-                else
-                {
+                else {
                     r.getRaces().get(horizCount).setDeaths(Integer.parseInt(
                         curr));
                 }

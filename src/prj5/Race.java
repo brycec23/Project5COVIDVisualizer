@@ -6,14 +6,15 @@ package prj5;
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
 // -- Bryce Cullen (brycec23)
+// -- Jonathan Ko (jonathancko)
 /**
  * Represents the COVID-19 Deaths and Cases for a single race.
  * 
  * @author Bryce Cullen (brycec23)
+ * @author Jonathan Ko (jonathancko)
  * @version 2020.11.17
  */
-public class Race implements Comparable<Race>
-{
+public class Race implements Comparable<Race> {
     private String name;
     private int numCases;
     private int numDeaths;
@@ -28,8 +29,7 @@ public class Race implements Comparable<Race>
      * @param numDeaths
      *            Number of COVID deaths in that race.
      */
-    public Race(String name)
-    {
+    public Race(String name) {
         this.name = name;
     }
 
@@ -39,8 +39,7 @@ public class Race implements Comparable<Race>
      * 
      * @return Name of race.
      */
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
@@ -50,8 +49,7 @@ public class Race implements Comparable<Race>
      * 
      * @return Number of cases.
      */
-    public int getNumCases()
-    {
+    public int getNumCases() {
         return numCases;
     }
 
@@ -62,8 +60,7 @@ public class Race implements Comparable<Race>
      * @param cases
      *            number to set cases to.
      */
-    public void setCases(int cases)
-    {
+    public void setCases(int cases) {
         numCases = cases;
     }
 
@@ -73,8 +70,7 @@ public class Race implements Comparable<Race>
      * 
      * @return Number of deaths.
      */
-    public int getNumDeaths()
-    {
+    public int getNumDeaths() {
         return numDeaths;
     }
 
@@ -85,8 +81,7 @@ public class Race implements Comparable<Race>
      * @param deaths
      *            number to set deaths to.
      */
-    public void setDeaths(int deaths)
-    {
+    public void setDeaths(int deaths) {
         numDeaths = deaths;
     }
 
@@ -96,10 +91,8 @@ public class Race implements Comparable<Race>
      * 
      * @return CFR as a double.
      */
-    public double calcCFR()
-    {
-        if (numCases == -1 || numDeaths == -1)
-        {
+    public double calcCFR() {
+        if (numCases == -1 || numDeaths == -1) {
             return -1;
         }
         double CFR = 0.0;
@@ -116,18 +109,14 @@ public class Race implements Comparable<Race>
      * @return 1 if this has a greater CFR than other, -1 if this has a lower
      *         CFR than other, 0 if equal
      */
-    public int compareTo(Race other)
-    {
-        if (this.calcCFR() > other.calcCFR())
-        {
+    public int compareTo(Race other) {
+        if (this.calcCFR() > other.calcCFR()) {
             return 1;
         }
-        if (this.calcCFR() < other.calcCFR())
-        {
+        if (this.calcCFR() < other.calcCFR()) {
             return -1;
         }
-        else
-        {
+        else {
             return 0;
         }
     }
@@ -138,8 +127,7 @@ public class Race implements Comparable<Race>
      * 
      * @return String representation of race.
      */
-    public String toString()
-    {
+    public String toString() {
         return (name + ": " + numCases + " cases, " + calcCFR() + " CFR");
     }
 

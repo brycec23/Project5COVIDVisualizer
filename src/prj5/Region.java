@@ -17,8 +17,7 @@ import java.util.ArrayList;
  * @version 2020.11.17
  */
 
-public class Region implements Comparable<Region>
-{
+public class Region implements Comparable<Region> {
 
     private String name;
     private ArrayList<Race> races;
@@ -29,8 +28,7 @@ public class Region implements Comparable<Region>
      * @param name
      *            Name of region.
      */
-    public Region(String name)
-    {
+    public Region(String name) {
         this.name = name;
         races = new ArrayList<Race>();
     }
@@ -41,8 +39,7 @@ public class Region implements Comparable<Region>
      * 
      * @return name.
      */
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
@@ -53,8 +50,7 @@ public class Region implements Comparable<Region>
      * @param race
      *            Race to add.
      */
-    public void addRaceData(Race race)
-    {
+    public void addRaceData(Race race) {
         races.add(race);
     }
 
@@ -64,8 +60,7 @@ public class Region implements Comparable<Region>
      * 
      * @return races
      */
-    public ArrayList<Race> getRaces()
-    {
+    public ArrayList<Race> getRaces() {
         return races;
     }
 
@@ -77,8 +72,7 @@ public class Region implements Comparable<Region>
      *            Race to get deaths for.
      * @return Number of death for specified race.
      */
-    public int getDeaths(Race race)
-    {
+    public int getDeaths(Race race) {
         return races.get(races.indexOf(race)).getNumDeaths();
     }
 
@@ -90,8 +84,7 @@ public class Region implements Comparable<Region>
      *            Race to get cases for.
      * @return Number of cases for specified race.
      */
-    public int getCases(Race race)
-    {
+    public int getCases(Race race) {
         return races.get(races.indexOf(race)).getNumCases();
     }
 
@@ -101,8 +94,7 @@ public class Region implements Comparable<Region>
      * 
      * @return String representation of region.
      */
-    public String toString()
-    {
+    public String toString() {
         // TODO implement toString()
         return "";
     }
@@ -117,8 +109,7 @@ public class Region implements Comparable<Region>
      *         lower in the alphabet than other. If first digit is same, move to
      *         second digit, else return 0 if same word.
      */
-    public int compareTo(Region other)
-    {
+    public int compareTo(Region other) {
         return this.getName().compareTo(other.getName());
     }
 
