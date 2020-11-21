@@ -110,17 +110,17 @@ public class Region implements Comparable<Region> {
      *         second digit, else return 0 if same word.
      */
     public int compareTo(Region other) {
+        int compare = 0;
         if (this.getName().equals(other.getName())) {
-            return 0;
+            compare = 0;
         }
         if (this.getName().compareTo(other.getName()) > 0) {
-            return 1;
+            compare = 1;
         }
-        else if (this.getName().compareTo(other.getName()) < 0)
-            ;
-        {
-            return -1;
+        else if (this.getName().compareTo(other.getName()) < 0) {
+            compare = -1;
         }
+        return compare;
     }
 
 }
