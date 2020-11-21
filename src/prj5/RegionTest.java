@@ -32,11 +32,11 @@ public class RegionTest extends TestCase {
      */
     public void setUp() {
         region = new Region("VA");
-        
+
         race = new Race("White");
         race.setCases(100);
         race.setDeaths(50);
-        
+
         region1 = new Region("DC");
         region1.addRaceData(race);
     }
@@ -54,7 +54,9 @@ public class RegionTest extends TestCase {
      * Makes sure the method addRaceData works as expected
      */
     public void testAddRaceData() {
-        
+        region.addRaceData(race);
+        assertEquals("[White: 100 cases, 50.0 CFR]", region.getRaces()
+            .toString());
     }
 
 
@@ -62,7 +64,8 @@ public class RegionTest extends TestCase {
      * Makes sure the method getRaces works as expected
      */
     public void testGetRaces() {
-        
+        assertEquals("[White: 100 cases, 50.0 CFR]", region1.getRaces()
+            .toString());
     }
 
 
@@ -94,6 +97,8 @@ public class RegionTest extends TestCase {
      * Makes sure the method compareTo works as expected
      */
     public void testCompareTo() {
-
+        assertEquals(1, region.compareTo(region1));
+        assertEquals(-1, region1.compareTo(region));
+        assertEquals(0, region.compareTo(region));
     }
 }

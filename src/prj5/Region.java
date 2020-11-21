@@ -95,7 +95,7 @@ public class Region implements Comparable<Region> {
      * @return String representation of region.
      */
     public String toString() {
-        // TODO implement toString()
+        // TODO
         return "";
     }
 
@@ -110,7 +110,17 @@ public class Region implements Comparable<Region> {
      *         second digit, else return 0 if same word.
      */
     public int compareTo(Region other) {
-        return this.getName().compareTo(other.getName());
+        if (this.getName().equals(other.getName())) {
+            return 0;
+        }
+        if (this.getName().compareTo(other.getName()) > 0) {
+            return 1;
+        }
+        else if (this.getName().compareTo(other.getName()) < 0)
+            ;
+        {
+            return -1;
+        }
     }
 
 }
