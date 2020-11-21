@@ -11,10 +11,11 @@ import java.util.Scanner;
 // do.
 // -- Bryce Cullen (brycec23)
 /**
- * Parses a CSV file and creates a LinkedList of Regions with Races.
+ * Parses a CSV file and creates a LinkedList of Regions with Races containing
+ * the data.
  * 
  * @author Bryce Cullen (brycec23)
- * @version 2020.11.19
+ * @version 2020.11.20
  */
 public class FileReader
 {
@@ -27,10 +28,12 @@ public class FileReader
      * @param fileName
      *            File to parse.
      * @throws FileNotFoundException
+     *             if file is not found.
      */
     public FileReader(String fileName) throws FileNotFoundException
     {
         data = readFile(fileName);
+        @SuppressWarnings("unused")
         GUIWindow w = new GUIWindow(data);
     }
 

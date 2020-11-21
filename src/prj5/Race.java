@@ -6,18 +6,13 @@ package prj5;
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
 // -- Bryce Cullen (brycec23)
-// -- Jonathan Ko (jonathancko)
-// -- TODO NAME (PID)
-
 /**
  * Represents the COVID-19 Deaths and Cases for a single race.
  * 
  * @author Bryce Cullen (brycec23)
- * @author Jonathan Ko (jonathancko)
- * @author TODO
  * @version 2020.11.17
  */
-public class Race
+public class Race implements Comparable<Race>
 {
     private String name;
     private int numCases;
@@ -103,10 +98,38 @@ public class Race
      */
     public double calcCFR()
     {
-        //TODO needs to account for case of "NA"
+        if (numCases == -1 || numDeaths == -1)
+        {
+            return -1;
+        }
         double CFR = 0.0;
         CFR = numDeaths / numCases;
         return CFR;
+    }
+
+
+    /**
+     * Sorts races by CFR.
+     * 
+     * @param other
+     *            The race to compare to.
+     * @return 1 if this has a greater CFR than other, -1 if this has a lower
+     *         CFR than other, 0 if equal
+     */
+    public int compareTo(Race other)
+    {
+        if (this.calcCFR() > other.calcCFR())
+        {
+            return 1;
+        }
+        if (this.calcCFR() < other.calcCFR())
+        {
+            return -1;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
 
@@ -117,8 +140,7 @@ public class Race
      */
     public String toString()
     {
-        return ("Race: " + name + " Cases: " + numCases + " Deaths: "
-            + numDeaths);
+        return (name + ": " + numCases + " cases, " + calcCFR() + " CFR");
     }
 
 }
