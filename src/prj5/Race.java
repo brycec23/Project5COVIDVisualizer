@@ -93,10 +93,13 @@ public class Race implements Comparable<Race> {
      */
     public double calcCFR() {
         if (numCases == -1 || numDeaths == -1) {
-            return -1;
+            return -1.0;
+        }
+        else if (numCases == 0) {
+            throw new ArithmeticException();
         }
         double CFR = 0.0;
-        CFR = numDeaths / numCases;
+        CFR = (double)numDeaths / (double)numCases;
         return CFR;
     }
 

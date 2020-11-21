@@ -24,12 +24,18 @@ public class RaceTest extends TestCase {
      * Fields
      */
     private Race race;
+    private Race race2;
+    private Race race3;
+    private Race race4;
 
     /**
      * Sets up the test class for accurate testing
      */
     public void setUp() {
         race = new Race("White");
+        race2 = new Race("Black");
+        race3 = new Race("Asian");
+        race4 = new Race("LatinX");
     }
 
 
@@ -79,7 +85,24 @@ public class RaceTest extends TestCase {
      * Makes sure the method calcCFR works as expected
      */
     public void testCalcCFR() {
-        // assertEquals(0, race.calcCFR());
+        Exception exception = null;
+        try {
+            race.calcCFR();
+            fail("calcCFR() is not throwing an exception when it should");
+        }
+        catch (Exception e) {
+            exception = e;
+        }
+        assertTrue("calcCFR() is throwing the wrong type of exceptions",
+            exception instanceof ArithmeticException);
+
+        race.setCases(-1);
+        race.setDeaths(-1);
+        assertEquals(-1.0, race.calcCFR(), 0.01);
+
+        race.setCases(100);
+        race.setDeaths(50);
+        assertEquals(0.5, race.calcCFR(), 0.01);
     }
 
 
@@ -87,7 +110,17 @@ public class RaceTest extends TestCase {
      * Makes sure the method compareTo works as expected
      */
     public void testCompareTo() {
-
+        race.setCases(100);
+        race.setDeaths(50);
+        race2.setCases(100);
+        race2.setDeaths(25);
+        race3.setCases(100);
+        race3.setDeaths(75);
+        race4.setCases(100);
+        race4.setDeaths(50);
+        assertEquals(1, race.compareTo(race2));
+        assertEquals(-1, race.compareTo(race3));
+        assertEquals(0, race.compareTo(race4));
     }
 
 
@@ -95,6 +128,11 @@ public class RaceTest extends TestCase {
      * Makes sure the method toString works as expected
      */
     public void testToString() {
-
+        race.setCases(100);
+        race.setDeaths(50);
+        assertEquals("White: 100 cases, 0.5 CFR", race.toString());
+        race.setCases(-1);
+        race.setDeaths(-1);
+        assertEquals("White: -1 cases, -1.0 CFR", race.toString());
     }
 }

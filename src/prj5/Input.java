@@ -29,7 +29,7 @@ public class Input {
     }
 
 
-    public void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException {
         new FileReader(args[1]);
     }
 
