@@ -19,7 +19,8 @@ import java.util.Scanner;
  * @author Jonathan Ko (jonathancko)
  * @version 2020.11.20
  */
-public class FileReader {
+public class FileReader
+{
 
     private LinkedList<Region> data;
 
@@ -31,48 +32,58 @@ public class FileReader {
      * @throws FileNotFoundException
      *             if file is not found.
      */
-    public FileReader(String fileName) throws FileNotFoundException {
+    public FileReader(String fileName) throws FileNotFoundException
+    {
         data = readFile(fileName);
+        printToConsole();
         @SuppressWarnings("unused")
         GUIWindow w = new GUIWindow(data);
     }
 
 
     private LinkedList<Region> readFile(String file)
-        throws FileNotFoundException {
+        throws FileNotFoundException
+    {
         LinkedList<Region> data = new LinkedList<Region>();
         Scanner scanner = new Scanner(new File(file));
         scanner.useDelimiter(",|\\n|\\r");
         String[] races = new String[5];
-        races[0] = "WHITE";
-        races[1] = "BLACK";
-        races[2] = "LATINX";
-        races[3] = "ASAIN";
-        races[4] = "OTHER";
+        races[0] = "white";
+        races[1] = "black";
+        races[2] = "latinx";
+        races[3] = "asain";
+        races[4] = "other";
         int count = 0;
-        while (scanner.hasNextLine() && count < 6) {
+        while (scanner.hasNextLine() && count < 6)
+        {
             scanner.nextLine();
             Region r = new Region(scanner.next());
             int horizCount = 0;
-            while (scanner.hasNext() && horizCount < races.length) {
+            while (scanner.hasNext() && horizCount < races.length)
+            {
                 Race tempRace = new Race(races[horizCount]);
                 String curr = scanner.next();
-                if (curr.equals("NA")) {
+                if (curr.equals("NA"))
+                {
                     tempRace.setCases(-1);
                 }
-                else {
+                else
+                {
                     tempRace.setCases(Integer.parseInt(curr));
                 }
                 r.addRaceData(tempRace);
                 horizCount++;
             }
             horizCount = 0;
-            while (scanner.hasNext() && horizCount < races.length) {
+            while (scanner.hasNext() && horizCount < races.length)
+            {
                 String curr = scanner.next();
-                if (curr.equals("NA")) {
+                if (curr.equals("NA"))
+                {
                     r.getRaces().get(horizCount).setDeaths(-1);
                 }
-                else {
+                else
+                {
                     r.getRaces().get(horizCount).setDeaths(Integer.parseInt(
                         curr));
                 }
@@ -83,5 +94,35 @@ public class FileReader {
         }
         scanner.close();
         return data;
+    }
+
+
+    private void printToConsole()
+    {
+        Region region = null;
+        LinkedList<Race> races = null;
+        Race race = null;
+        double CFR;
+        for (int i = 0; i < 6; i++)
+        {
+            region = data.get(i);
+            races = region.toLinkedList();
+            races.insertionSort(new SortAlpha());
+            System.out.println(region.getName());
+            for (int j = 0; j < 5; j++)
+            {
+                race = races.get(j);
+                System.out.println(race.toString());
+            }
+            System.out.println("====");
+            races.insertionSort(new SortCFR());
+            for (int j = 0; j < 5; j++)
+            {
+                race = races.get(j);
+                System.out.println(race.toString());
+            }
+            System.out.println("====");
+        }
+
     }
 }

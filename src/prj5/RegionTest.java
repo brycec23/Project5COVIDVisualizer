@@ -1,5 +1,6 @@
 package prj5;
 
+import java.io.FileNotFoundException;
 import student.TestCase;
 
 // Virginia Tech Honor Code Pledge:
@@ -19,7 +20,8 @@ import student.TestCase;
  * @author TODO
  * @version 2020.11.21
  */
-public class RegionTest extends TestCase {
+public class RegionTest extends TestCase
+{
     /**
      * Fields
      */
@@ -30,7 +32,8 @@ public class RegionTest extends TestCase {
     /**
      * Sets up the test class for accurate testing
      */
-    public void setUp() {
+    public void setUp()
+    {
         region = new Region("VA");
 
         race = new Race("White");
@@ -45,7 +48,8 @@ public class RegionTest extends TestCase {
     /**
      * Makes sure the method getName works as expected
      */
-    public void testGetName() {
+    public void testGetName()
+    {
         assertEquals("VA", region.getName());
     }
 
@@ -53,7 +57,8 @@ public class RegionTest extends TestCase {
     /**
      * Makes sure the method addRaceData works as expected
      */
-    public void testAddRaceData() {
+    public void testAddRaceData()
+    {
         region.addRaceData(race);
         assertEquals("[White: 100 cases, 50.0 CFR]", region.getRaces()
             .toString());
@@ -63,7 +68,8 @@ public class RegionTest extends TestCase {
     /**
      * Makes sure the method getRaces works as expected
      */
-    public void testGetRaces() {
+    public void testGetRaces()
+    {
         assertEquals("[White: 100 cases, 50.0 CFR]", region1.getRaces()
             .toString());
     }
@@ -72,7 +78,8 @@ public class RegionTest extends TestCase {
     /**
      * Makes sure the method getDeaths works as expected
      */
-    public void testGetDeaths() {
+    public void testGetDeaths()
+    {
         assertEquals(50, region1.getDeaths(race));
     }
 
@@ -80,15 +87,19 @@ public class RegionTest extends TestCase {
     /**
      * Makes sure the method getCases works as expected
      */
-    public void testGetCases() {
+    public void testGetCases()
+    {
         assertEquals(100, region1.getCases(race));
     }
 
 
     /**
      * Makes sure the method toString works as expected
+     * 
+     * @throws FileNotFoundException
      */
-    public void testToString() {
+    public void testToString() throws FileNotFoundException
+    {
 
     }
 
@@ -96,7 +107,8 @@ public class RegionTest extends TestCase {
     /**
      * Makes sure the method compareTo works as expected
      */
-    public void testCompareTo() {
+    public void testCompareTo()
+    {
         assertEquals(1, region.compareTo(region1));
         assertEquals(-1, region1.compareTo(region));
         assertEquals(0, region.compareTo(region));

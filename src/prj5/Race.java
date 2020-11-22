@@ -1,5 +1,7 @@
 package prj5;
 
+import java.text.DecimalFormat;
+
 // Virginia Tech Honor Code Pledge:
 //
 // As a Hokie, I will conduct myself with honor and integrity at all times.
@@ -14,7 +16,8 @@ package prj5;
  * @author Jonathan Ko (jonathancko)
  * @version 2020.11.17
  */
-public class Race implements Comparable<Race> {
+public class Race implements Comparable<Race>
+{
     private String name;
     private int numCases;
     private int numDeaths;
@@ -29,7 +32,8 @@ public class Race implements Comparable<Race> {
      * @param numDeaths
      *            Number of COVID deaths in that race.
      */
-    public Race(String name) {
+    public Race(String name)
+    {
         this.name = name;
     }
 
@@ -39,7 +43,8 @@ public class Race implements Comparable<Race> {
      * 
      * @return Name of race.
      */
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
@@ -49,7 +54,8 @@ public class Race implements Comparable<Race> {
      * 
      * @return Number of cases.
      */
-    public int getNumCases() {
+    public int getNumCases()
+    {
         return numCases;
     }
 
@@ -60,7 +66,8 @@ public class Race implements Comparable<Race> {
      * @param cases
      *            number to set cases to.
      */
-    public void setCases(int cases) {
+    public void setCases(int cases)
+    {
         numCases = cases;
     }
 
@@ -70,7 +77,8 @@ public class Race implements Comparable<Race> {
      * 
      * @return Number of deaths.
      */
-    public int getNumDeaths() {
+    public int getNumDeaths()
+    {
         return numDeaths;
     }
 
@@ -81,7 +89,8 @@ public class Race implements Comparable<Race> {
      * @param deaths
      *            number to set deaths to.
      */
-    public void setDeaths(int deaths) {
+    public void setDeaths(int deaths)
+    {
         numDeaths = deaths;
     }
 
@@ -91,35 +100,42 @@ public class Race implements Comparable<Race> {
      * 
      * @return CFR as a double.
      */
-    public double calcCFR() {
-        if (numCases == -1 || numDeaths == -1) {
+    public double calcCFR()
+    {
+        if (numCases == -1 || numDeaths == -1)
+        {
             return -1.0;
         }
-        else if (numCases == 0) {
+        else if (numCases == 0)
+        {
             throw new ArithmeticException();
         }
         double CFR = 0.0;
         CFR = ((double)numDeaths / (double)numCases) * 100;
-        return CFR;
+        DecimalFormat df = new DecimalFormat("#.##");
+        return Double.parseDouble(df.format(CFR));
     }
 
 
     /**
-     * Sorts races by CFR.
+     * Sorts races alphabetically.
      * 
      * @param other
      *            The race to compare to.
-     * @return 1 if this has a greater CFR than other, -1 if this has a lower
-     *         CFR than other, 0 if equal
+     * @return 1 if this is greater than other, etc.
      */
-    public int compareTo(Race other) {
-        if (this.calcCFR() > other.calcCFR()) {
+    public int compareTo(Race other)
+    {
+        if (this.getName().compareTo(other.getName()) > 0)
+        {
             return 1;
         }
-        if (this.calcCFR() < other.calcCFR()) {
+        if (this.getName().compareTo(other.getName()) < 0)
+        {
             return -1;
         }
-        else {
+        else
+        {
             return 0;
         }
     }
@@ -130,8 +146,9 @@ public class Race implements Comparable<Race> {
      * 
      * @return String representation of race.
      */
-    public String toString() {
-        return (name + ": " + numCases + " cases, " + calcCFR() + " CFR");
+    public String toString()
+    {
+        return (name + ": " + numCases + " cases, " + calcCFR() + "% CFR");
     }
 
 }

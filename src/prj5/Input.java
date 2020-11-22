@@ -19,18 +19,22 @@ import java.io.FileNotFoundException;
  * @author TODO
  * @version 2020.11.19
  */
-public class Input {
+public class Input
+{
 
     /**
      * Creates a new Input (Never used).
      */
-    public Input() {
+    public Input()
+    {
         // Intentionally Empty
     }
 
 
-    public static void main(String[] args) throws FileNotFoundException {
-        new FileReader(args[1]);
+    public static void main(String[] args) throws FileNotFoundException
+    {
+        FileReader f = new FileReader(args[0]);
+
     }
 
 }
