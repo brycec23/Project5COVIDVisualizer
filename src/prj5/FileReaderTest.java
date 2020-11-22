@@ -28,6 +28,7 @@ public class FileReaderTest extends TestCase {
 
 
     public void test() throws FileNotFoundException {
+        @SuppressWarnings("unused")
         FileReader f = new FileReader(
             "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
     }
