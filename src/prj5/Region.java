@@ -128,15 +128,30 @@ public class Region implements Comparable<Region>
         return raceLL;
     }
 
+    
+    /**
+     * Returns a Dlinkedlist of the races in this region.
+     * 
+     * @return Dlinkedlist of the races in this region.
+     */
+    public DLList<Race> toDLList()
+    {
+        DLList<Race> raceLL = new DLList<Race>();
+        for (Race r : races)
+        {
+            raceLL.add(r);
+        }
+        return raceLL;
+    }
 
     /**
      * Returns an alphabetically sorted linked list
      * 
      * @return alphabetically sorted linked list
      */
-    public LinkedList<Race> sortAlpha()
+    public DLList<Race> sortAlpha()
     {
-        LinkedList<Race> sorted = toLinkedList();
+        DLList<Race> sorted = toDLList();
         sorted.insertionSort(new SortAlpha());
         return sorted;
     }
@@ -147,9 +162,9 @@ public class Region implements Comparable<Region>
      * 
      * @return linked list sorted by CFR
      */
-    public LinkedList<Race> sortCFR()
+    public DLList<Race> sortCFR()
     {
-        LinkedList<Race> sorted = toLinkedList();
+        DLList<Race> sorted = toDLList();
         sorted.insertionSort(new SortCFR());
         return sorted;
     }

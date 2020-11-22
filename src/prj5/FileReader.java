@@ -22,7 +22,7 @@ import java.util.Scanner;
 public class FileReader
 {
 
-    private LinkedList<Region> data;
+    private DLList<Region> data;
 
     /**
      * Creates a new FileReader.
@@ -36,15 +36,15 @@ public class FileReader
     {
         data = readFile(fileName);
         printToConsole();
-        @SuppressWarnings("unused")
-        GUIWindow w = new GUIWindow(data);
+        //@SuppressWarnings("unused")
+        //GUIWindow w = new GUIWindow(data);
     }
 
 
-    private LinkedList<Region> readFile(String file)
+    private DLList<Region> readFile(String file)
         throws FileNotFoundException
     {
-        LinkedList<Region> data = new LinkedList<Region>();
+        DLList<Region> data = new DLList<Region>();
         Scanner scanner = new Scanner(new File(file));
         scanner.useDelimiter(",|\\n|\\r");
         String[] races = new String[5];
@@ -100,13 +100,13 @@ public class FileReader
     private void printToConsole()
     {
         Region region = null;
-        LinkedList<Race> races = null;
+        DLList<Race> races = null;
         Race race = null;
         double CFR;
         for (int i = 0; i < 6; i++)
         {
             region = data.get(i);
-            races = region.toLinkedList();
+            races = region.toDLList();
             races.insertionSort(new SortAlpha());
             System.out.println(region.getName());
             for (int j = 0; j < 5; j++)
