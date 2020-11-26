@@ -8,7 +8,6 @@ package prj5;
 // -- Bryce Cullen (brycec23)
 // -- Jonathan Ko (jonathancko)
 // -- TODO NAME (PID)
-
 /**
  * Class to create visual window
  * 

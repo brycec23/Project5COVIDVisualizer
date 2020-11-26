@@ -3,12 +3,16 @@ package prj5;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import prj5.LinkedList.Node;
-
+//Virginia Tech Honor Code Pledge:
+//
+//As a Hokie, I will conduct myself with honor and integrity at all times.
+//I will not lie, cheat, or steal, nor will I accept the actions of those who
+//do.
+//-- Bryce Cullen (brycec23)
 /**
  * A doubly linked list.
  *
- * @author Bryce Cullen
+ * @author Bryce Cullen (brycec23)
  * @verison 2020.11.21
  * @param <E>
  *            The type of object the class will store
@@ -16,6 +20,14 @@ import prj5.LinkedList.Node;
 public class DLList<E>
 {
 
+    /**
+     * Represents a node.
+     * 
+     * @author Bryce Cullen (brycec23)
+     *
+     * @param <E>
+     *            Type of object to store as data in node.
+     */
     private static class Node<E>
     {
         private Node<E> next;
@@ -23,10 +35,10 @@ public class DLList<E>
         private E data;
 
         /**
-         * Creates a new node with the given data
+         * Creates a new node with the given data.
          *
          * @param d
-         *            the data to put inside the node
+         *            The data to put inside the node.
          */
         public Node(E d)
         {
@@ -35,10 +47,10 @@ public class DLList<E>
 
 
         /**
-         * Sets the node after this node
+         * Sets the node after this node.
          *
          * @param n
-         *            the node after this one
+         *            The node after this one.
          */
         public void setNext(Node<E> n)
         {
@@ -47,10 +59,10 @@ public class DLList<E>
 
 
         /**
-         * Sets the node before this one
+         * Sets the node before this one.
          *
          * @param n
-         *            the node before this one
+         *            The node before this one.
          */
         public void setPrevious(Node<E> n)
         {
@@ -59,9 +71,9 @@ public class DLList<E>
 
 
         /**
-         * Gets the next node
+         * Gets the next node.
          *
-         * @return the next node
+         * @return The next node.
          */
         public Node<E> next()
         {
@@ -70,9 +82,9 @@ public class DLList<E>
 
 
         /**
-         * Gets the node before this one
+         * Gets the node before this one.
          *
-         * @return the node before this one
+         * @return The node before this one.
          */
         public Node<E> previous()
         {
@@ -81,9 +93,9 @@ public class DLList<E>
 
 
         /**
-         * Gets the data in the node
+         * Gets the data in the node.
          *
-         * @return the data in the node
+         * @return The data in the node.
          */
         public E getData()
         {
