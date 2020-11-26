@@ -102,18 +102,17 @@ public class Race implements Comparable<Race>
      */
     public double calcCFR()
     {
-        if (numCases == -1 || numDeaths == -1)
+        if (numCases == -1 || numDeaths == -1 || numCases == 0 || numDeaths == 0)
         {
             return -1.0;
         }
-        else if (numCases == 0)
+        else
         {
-            throw new ArithmeticException();
+            double CFR = 0.0;
+            CFR = ((double)numDeaths / (double)numCases) * 100;
+            DecimalFormat df = new DecimalFormat("#.#");
+            return Double.parseDouble(df.format(CFR));
         }
-        double CFR = 0.0;
-        CFR = ((double)numDeaths / (double)numCases) * 100;
-        DecimalFormat df = new DecimalFormat("#.##");
-        return Double.parseDouble(df.format(CFR));
     }
 
 
@@ -148,7 +147,12 @@ public class Race implements Comparable<Race>
      */
     public String toString()
     {
-        return (name + ": " + numCases + " cases, " + calcCFR() + "% CFR");
+        String formattedCFR = String.valueOf(calcCFR());
+        if (formattedCFR.substring(formattedCFR.length()-2).equals(".0"))
+        {
+            formattedCFR = formattedCFR.replace(".0", "");
+        }
+        return (name + ": " + numCases + " cases, " + formattedCFR + "% CFR");
     }
 
 }

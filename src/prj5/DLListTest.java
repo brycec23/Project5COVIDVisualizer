@@ -416,7 +416,7 @@ public class DLListTest extends TestCase
         
         list1.insertionSort(new SortAlpha());
         
-        assertEquals(list2, list1);
+        assertEquals(list2.toString(), list1.toString());
         
     }
 }
