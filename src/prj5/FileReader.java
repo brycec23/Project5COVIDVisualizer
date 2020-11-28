@@ -10,13 +10,11 @@ import java.util.Scanner;
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
 // -- Bryce Cullen (brycec23)
-// -- Jonathan Ko (jonathancko)
 /**
  * Parses a CSV file and creates a LinkedList of Regions with Races containing
  * the data.
  * 
  * @author Bryce Cullen (brycec23)
- * @author Jonathan Ko (jonathancko)
  * @version 2020.11.20
  */
 public class FileReader
@@ -36,13 +34,22 @@ public class FileReader
     {
         data = readFile(fileName);
         printToConsole();
-        //@SuppressWarnings("unused")
-        //GUIWindow w = new GUIWindow(data);
+        // @SuppressWarnings("unused")
+        // GUIWindow w = new GUIWindow(data);
     }
 
 
-    private DLList<Region> readFile(String file)
-        throws FileNotFoundException
+    /**
+     * Reads a file and creates regions with races from that data.
+     * 
+     * @param file
+     *            File to read.
+     * @return a doubly linked list of regions of races representing the data in
+     *         the file.
+     * @throws FileNotFoundException
+     *             if file is unacceptable.
+     */
+    private DLList<Region> readFile(String file) throws FileNotFoundException
     {
         DLList<Region> data = new DLList<Region>();
         Scanner scanner = new Scanner(new File(file));
@@ -51,7 +58,7 @@ public class FileReader
         races[0] = "white";
         races[1] = "black";
         races[2] = "latinx";
-        races[3] = "asain";
+        races[3] = "asian";
         races[4] = "other";
         int count = 0;
         while (scanner.hasNextLine() && count < 6)
@@ -97,12 +104,14 @@ public class FileReader
     }
 
 
+    /**
+     * Prints the data to console.
+     */
     private void printToConsole()
     {
         Region region = null;
         DLList<Race> races = null;
         Race race = null;
-        double CFR;
         for (int i = 0; i < 6; i++)
         {
             region = data.get(i);

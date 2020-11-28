@@ -8,15 +8,10 @@ import java.io.FileNotFoundException;
 // I will not lie, cheat, or steal, nor will I accept the actions of those who
 // do.
 // -- Bryce Cullen (brycec23)
-// -- Jonathan Ko (jonathancko)
-// -- TODO NAME (PID)
-
 /**
  * Contains the main method of the project.
  * 
  * @author Bryce Cullen (brycec23)
- * @author Jonathan Ko (jonathancko)
- * @author TODO
  * @version 2020.11.19
  */
 public class Input
@@ -31,8 +26,17 @@ public class Input
     }
 
 
+    /**
+     * Main method for program.
+     * 
+     * @param args
+     *            File to be used.
+     * @throws FileNotFoundException
+     *             If file is not found;
+     */
     public static void main(String[] args) throws FileNotFoundException
     {
+        @SuppressWarnings("unused")
         FileReader f = new FileReader(args[0]);
 
     }

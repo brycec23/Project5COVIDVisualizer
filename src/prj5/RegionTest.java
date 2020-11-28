@@ -1,6 +1,5 @@
 package prj5;
 
-import java.io.FileNotFoundException;
 import student.TestCase;
 
 // Virginia Tech Honor Code Pledge:
@@ -10,24 +9,20 @@ import student.TestCase;
 // do.
 // -- Bryce Cullen (brycec23)
 // -- Jonathan Ko (jonathancko)
-// -- TODO NAME (PID)
-
 /**
  * Test class for Region
  * 
  * @author Bryce Cullen (brycec23)
  * @author Jonathan Ko (jonathancko)
- * @author TODO
  * @version 2020.11.21
  */
 public class RegionTest extends TestCase
 {
-    /**
-     * Fields
-     */
     private Region region;
     private Region region1;
+    private Region region2;
     private Race race;
+    private Race race1;
 
     /**
      * Sets up the test class for accurate testing
@@ -40,8 +35,16 @@ public class RegionTest extends TestCase
         race.setCases(100);
         race.setDeaths(50);
 
+        race1 = new Race("Black");
+        race1.setCases(100);
+        race1.setDeaths(25);
+
         region1 = new Region("DC");
         region1.addRaceData(race);
+
+        region2 = new Region("CT");
+        region2.addRaceData(race);
+        region2.addRaceData(race1);
     }
 
 
@@ -60,7 +63,7 @@ public class RegionTest extends TestCase
     public void testAddRaceData()
     {
         region.addRaceData(race);
-        assertEquals("[White: 100 cases, 50.0 CFR]", region.getRaces()
+        assertEquals("[White: 100 cases, 50% CFR]", region.getRaces()
             .toString());
     }
 
@@ -70,7 +73,7 @@ public class RegionTest extends TestCase
      */
     public void testGetRaces()
     {
-        assertEquals("[White: 100 cases, 50.0 CFR]", region1.getRaces()
+        assertEquals("[White: 100 cases, 50% CFR]", region1.getRaces()
             .toString());
     }
 
@@ -95,12 +98,25 @@ public class RegionTest extends TestCase
 
     /**
      * Makes sure the method toString works as expected
-     * 
-     * @throws FileNotFoundException
      */
-    public void testToString() throws FileNotFoundException
+    public void testToString()
     {
+        assertEquals("DC's COVID-19 Stats by race: [White: 100 cases, 50% CFR]",
+            region1.toString());
+    }
 
+
+    /**
+     * Makes sure toDLList returns the correct DDList representation of a
+     * region.
+     */
+    public void testToDLList()
+    {
+        DLList<Race> region1List = new DLList<Race>();
+        region1List = region1.toDLList();
+        DLList<Race> reference = new DLList<Race>();
+        reference.add(race);
+        assertEquals(reference.toString(), region1List.toString());
     }
 
 

@@ -3,12 +3,13 @@ package prj5;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import student.TestCase;
-//Virginia Tech Honor Code Pledge:
+
+// Virginia Tech Honor Code Pledge:
 //
-//As a Hokie, I will conduct myself with honor and integrity at all times.
-//I will not lie, cheat, or steal, nor will I accept the actions of those who
-//do.
-//-- Bryce Cullen (brycec23)
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Bryce Cullen (brycec23)
 /**
  * Test class for DLList
  * 
@@ -394,29 +395,33 @@ public class DLListTest extends TestCase
 
         assertEquals(0, list.size());
     }
-    
+
+
+    /**
+     * Tests insertionSort()
+     */
     public void testInsertionSort()
     {
         Race r1 = new Race("a");
         Race r2 = new Race("b");
         Race r3 = new Race("c");
         Race r4 = new Race("d");
-        
+
         DLList<Race> list1 = new DLList<Race>();
         list1.add(r3);
         list1.add(r2);
         list1.add(r1);
         list1.add(r4);
-        
+
         DLList<Race> list2 = new DLList<Race>();
         list2.add(r1);
         list2.add(r2);
         list2.add(r3);
         list2.add(r4);
-        
+
         list1.insertionSort(new SortAlpha());
-        
+
         assertEquals(list2.toString(), list1.toString());
-        
+
     }
 }

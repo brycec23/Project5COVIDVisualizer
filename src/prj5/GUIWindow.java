@@ -16,11 +16,13 @@ package prj5;
  * @author TODO
  * @version 2020.11.21
  */
-public class GUIWindow {
+public class GUIWindow
+{
 
-    LinkedList<Region> data;
+    DLList<Region> data;
 
-    public GUIWindow(LinkedList<Region> data) {
+    public GUIWindow(DLList<Region> data)
+    {
         this.data = data;
     }
 

@@ -3,12 +3,13 @@ package prj5;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-//Virginia Tech Honor Code Pledge:
+
+// Virginia Tech Honor Code Pledge:
 //
-//As a Hokie, I will conduct myself with honor and integrity at all times.
-//I will not lie, cheat, or steal, nor will I accept the actions of those who
-//do.
-//-- Bryce Cullen (brycec23)
+// As a Hokie, I will conduct myself with honor and integrity at all times.
+// I will not lie, cheat, or steal, nor will I accept the actions of those who
+// do.
+// -- Bryce Cullen (brycec23)
 /**
  * A doubly linked list.
  *
@@ -475,6 +476,57 @@ public class DLList<E>
     }
 
 
+    /**
+     * Returns true if both lists have the exact same contents
+     * in the exact same order
+     *
+     * @return a boolean of whether two lists have the same contents,
+     *         item per item and in the same order
+     */
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (obj == this)
+        {
+            return true;
+        }
+        if (obj == null)
+        {
+            return false;
+        }
+        if (this.getClass() == obj.getClass())
+        {
+            @SuppressWarnings("unchecked")
+            DLList<E> other = ((DLList<E>)obj);
+            if (other.size() == this.size())
+            {
+                Node<E> current = head;
+                Node<E> otherCurrent = other.head;
+                while (current != null)
+                {
+                    if (!current.getData().equals(otherCurrent.getData()))
+                    {
+                        return false;
+                    }
+                    current = current.next();
+                    otherCurrent = otherCurrent.next();
+                }
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    /**
+     * Helper method for insertionSort.
+     * 
+     * @param comp
+     *            Comparator to use
+     * @param nodeToInsert
+     *            Node to be inserted into sorted portion.
+     */
     private void sort(Comparator<E> comp, Node<E> nodeToInsert)
     {
         E item = nodeToInsert.getData();
@@ -525,5 +577,10 @@ public class DLList<E>
                 sort(comp, nodeToInsert);
             }
         }
+        Node<E> newTail = new Node<E>(null);
+        getNodeAtIndex(size - 1).setNext(newTail);
+        newTail.setPrevious(getNodeAtIndex(size - 1));
+        tail = newTail;
+
     }
 }

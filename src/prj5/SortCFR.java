@@ -18,11 +18,20 @@ import java.util.Comparator;
 public class SortCFR implements Comparator<Race>
 {
 
+    /**
+     * Sorts races by CFR
+     * 
+     * @param r1
+     *            First race to compare.
+     * @param r2
+     *            Second race to compare.
+     * @return 1 if r1 is greater than r2, -1 if less than r2, 0 if equal.
+     */
     @Override
-    public int compare(Race o1, Race o2)
+    public int compare(Race r1, Race r2)
     {
-        Double a = o1.calcCFR();
-        Double b = o2.calcCFR();
+        Double a = r1.calcCFR();
+        Double b = r2.calcCFR();
 
         if (a > b)
         {
@@ -30,7 +39,7 @@ public class SortCFR implements Comparator<Race>
         }
         else if (a.equals(b))
         {
-            return o1.getName().compareTo(o2.getName());
+            return r1.getName().compareTo(r2.getName());
         }
         return 1;
     }

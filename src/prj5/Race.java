@@ -16,7 +16,7 @@ import java.text.DecimalFormat;
  * @author Jonathan Ko (jonathancko)
  * @version 2020.11.17
  */
-public class Race implements Comparable<Race>
+public class Race
 {
     private String name;
     private int numCases;
@@ -35,6 +35,8 @@ public class Race implements Comparable<Race>
     public Race(String name)
     {
         this.name = name;
+        numCases = -1;
+        numDeaths = -1;
     }
 
 
@@ -102,7 +104,7 @@ public class Race implements Comparable<Race>
      */
     public double calcCFR()
     {
-        if (numCases == -1 || numDeaths == -1 || numCases == 0 || numDeaths == 0)
+        if (numCases == -1 || numDeaths == -1 || numDeaths == 0)
         {
             return -1.0;
         }
@@ -117,30 +119,6 @@ public class Race implements Comparable<Race>
 
 
     /**
-     * Sorts races alphabetically.
-     * 
-     * @param other
-     *            The race to compare to.
-     * @return 1 if this is greater than other, etc.
-     */
-    public int compareTo(Race other)
-    {
-        if (this.getName().compareTo(other.getName()) > 0)
-        {
-            return 1;
-        }
-        if (this.getName().compareTo(other.getName()) < 0)
-        {
-            return -1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
-
-    /**
      * Returns a string representation of Race object.
      * 
      * @return String representation of race.
@@ -148,11 +126,39 @@ public class Race implements Comparable<Race>
     public String toString()
     {
         String formattedCFR = String.valueOf(calcCFR());
-        if (formattedCFR.substring(formattedCFR.length()-2).equals(".0"))
+        if (formattedCFR.substring(formattedCFR.length() - 2).equals(".0"))
         {
             formattedCFR = formattedCFR.replace(".0", "");
         }
         return (name + ": " + numCases + " cases, " + formattedCFR + "% CFR");
     }
 
+
+    /**
+     * Checks if two races are equal.
+     * 
+     * @param other
+     *            Race to compare to.
+     * @return True if races are equal.
+     */
+    public boolean equals(Race other)
+    {
+
+        if (other == this)
+        {
+            return true;
+        }
+        if (other == null)
+        {
+            return false;
+        }
+        if (this.getClass() == other.getClass() && this.getName() == other
+            .getName() && this.getNumCases() == other.getNumCases() && this
+                .getNumDeaths() == other.getNumDeaths())
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

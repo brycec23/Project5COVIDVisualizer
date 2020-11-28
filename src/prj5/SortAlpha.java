@@ -18,11 +18,20 @@ import java.util.Comparator;
 public class SortAlpha implements Comparator<Race>
 {
 
+    /**
+     * Sorts races alphabetically by name.
+     * 
+     * @param r1
+     *            First race to compare.
+     * @param r2
+     *            Second race to compare.
+     * @return 1 if r1 is greater than r2, -1 if less than r2, 0 if same word.
+     */
     @Override
-    public int compare(Race o1, Race o2)
+    public int compare(Race r1, Race r2)
     {
-        String a = o1.getName();
-        String b = o2.getName();
+        String a = r1.getName();
+        String b = r2.getName();
         return a.compareTo(b);
     }
 

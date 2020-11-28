@@ -104,35 +104,21 @@ public class Region implements Comparable<Region>
     public String toString()
     {
         StringBuilder s = new StringBuilder();
+        s.append(getName() + "'s COVID-19 Stats by race: ");
         for (Race r : races)
         {
+            s.append("[");
             s.append(r.toString());
-            s.append("\n");
+            s.append("]");
         }
         return s.toString();
     }
 
 
     /**
-     * Returns a linkedlist of the races in this region.
+     * Returns a DLList of the races in this region.
      * 
-     * @return linkedlist of the races in this region.
-     */
-    public LinkedList<Race> toLinkedList()
-    {
-        LinkedList<Race> raceLL = new LinkedList<Race>();
-        for (Race r : races)
-        {
-            raceLL.add(r);
-        }
-        return raceLL;
-    }
-
-    
-    /**
-     * Returns a Dlinkedlist of the races in this region.
-     * 
-     * @return Dlinkedlist of the races in this region.
+     * @return DLList of the races in this region.
      */
     public DLList<Race> toDLList()
     {
@@ -142,31 +128,6 @@ public class Region implements Comparable<Region>
             raceLL.add(r);
         }
         return raceLL;
-    }
-
-    /**
-     * Returns an alphabetically sorted linked list
-     * 
-     * @return alphabetically sorted linked list
-     */
-    public DLList<Race> sortAlpha()
-    {
-        DLList<Race> sorted = toDLList();
-        sorted.insertionSort(new SortAlpha());
-        return sorted;
-    }
-
-
-    /**
-     * Returns a linked list sorted by CFR
-     * 
-     * @return linked list sorted by CFR
-     */
-    public DLList<Race> sortCFR()
-    {
-        DLList<Race> sorted = toDLList();
-        sorted.insertionSort(new SortCFR());
-        return sorted;
     }
 
 
