@@ -420,8 +420,8 @@ public class DLListTest extends TestCase
         list2.add(r4);
 
         list1.insertionSort(new SortAlpha());
-
         assertEquals(list2.toString(), list1.toString());
 
     }
+
 }

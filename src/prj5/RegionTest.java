@@ -20,9 +20,7 @@ public class RegionTest extends TestCase
 {
     private Region region;
     private Region region1;
-    private Region region2;
     private Race race;
-    private Race race1;
 
     /**
      * Sets up the test class for accurate testing
@@ -35,16 +33,8 @@ public class RegionTest extends TestCase
         race.setCases(100);
         race.setDeaths(50);
 
-        race1 = new Race("Black");
-        race1.setCases(100);
-        race1.setDeaths(25);
-
         region1 = new Region("DC");
         region1.addRaceData(race);
-
-        region2 = new Region("CT");
-        region2.addRaceData(race);
-        region2.addRaceData(race1);
     }
 
 

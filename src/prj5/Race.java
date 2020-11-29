@@ -27,10 +27,6 @@ public class Race
      * 
      * @param name
      *            The name of race/ethnicity.
-     * @param numCases
-     *            Number of COVID cases in that race.
-     * @param numDeaths
-     *            Number of COVID deaths in that race.
      */
     public Race(String name)
     {
@@ -110,10 +106,10 @@ public class Race
         }
         else
         {
-            double CFR = 0.0;
-            CFR = ((double)numDeaths / (double)numCases) * 100;
+            double cfr = 0.0;
+            cfr = ((double)numDeaths / (double)numCases) * 100;
             DecimalFormat df = new DecimalFormat("#.#");
-            return Double.parseDouble(df.format(CFR));
+            return Double.parseDouble(df.format(cfr));
         }
     }
 
@@ -123,7 +119,7 @@ public class Race
      * 
      * @return CFR as string.
      */
-    public String CFRToString()
+    public String cfrToString()
     {
         String formattedCFR = String.valueOf(calcCFR());
         if (formattedCFR.substring(formattedCFR.length() - 2).equals(".0"))
@@ -141,35 +137,7 @@ public class Race
      */
     public String toString()
     {
-        return (name + ": " + numCases + " cases, " + CFRToString() + "% CFR");
+        return (name + ": " + numCases + " cases, " + cfrToString() + "% CFR");
     }
 
-
-    /**
-     * Checks if two races are equal.
-     * 
-     * @param other
-     *            Race to compare to.
-     * @return True if races are equal.
-     */
-    public boolean equals(Race other)
-    {
-
-        if (other == this)
-        {
-            return true;
-        }
-        if (other == null)
-        {
-            return false;
-        }
-        if (this.getClass() == other.getClass() && this.getName() == other
-            .getName() && this.getNumCases() == other.getNumCases() && this
-                .getNumDeaths() == other.getNumDeaths())
-        {
-            return true;
-        }
-
-        return false;
-    }
 }

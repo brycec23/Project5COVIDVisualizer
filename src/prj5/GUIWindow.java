@@ -111,7 +111,7 @@ public class GUIWindow
             // Creates CFR label
             if (race.calcCFR() != -1.0)
             {
-                TextShape cfrLabel = new TextShape(0, 370, race.CFRToString()
+                TextShape cfrLabel = new TextShape(0, 370, race.cfrToString()
                     + "%");
                 int cfrX = x - (cfrLabel.getWidth() / 2);
                 cfrLabel.moveTo(cfrX, 370);

@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
  * A doubly linked list.
  *
  * @author Bryce Cullen (brycec23)
- * @verison 2020.11.21
+ * @version 2020.11.21
  * @param <E>
  *            The type of object the class will store
  */
@@ -473,49 +473,6 @@ public class DLList<E>
 
         builder.append("}");
         return builder.toString();
-    }
-
-
-    /**
-     * Returns true if both lists have the exact same contents
-     * in the exact same order
-     *
-     * @return a boolean of whether two lists have the same contents,
-     *         item per item and in the same order
-     */
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (obj == this)
-        {
-            return true;
-        }
-        if (obj == null)
-        {
-            return false;
-        }
-        if (this.getClass() == obj.getClass())
-        {
-            @SuppressWarnings("unchecked")
-            DLList<E> other = ((DLList<E>)obj);
-            if (other.size() == this.size())
-            {
-                Node<E> current = head;
-                Node<E> otherCurrent = other.head;
-                while (current != null)
-                {
-                    if (!current.getData().equals(otherCurrent.getData()))
-                    {
-                        return false;
-                    }
-                    current = current.next();
-                    otherCurrent = otherCurrent.next();
-                }
-                return true;
-            }
-        }
-
-        return false;
     }
 
 

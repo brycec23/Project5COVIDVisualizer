@@ -103,4 +103,16 @@ public class RaceTest extends TestCase
         race.setDeaths(-1);
         assertEquals("White: -1 cases, -1% CFR", race.toString());
     }
+
+
+    /**
+     * Test cfrToString
+     */
+    public void testCfrToString()
+    {
+        Race race1 = new Race("Black");
+        race1.setCases(3);
+        race1.setDeaths(1);
+        assertEquals("33.3", race1.cfrToString());
+    }
 }

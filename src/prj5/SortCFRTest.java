@@ -21,6 +21,7 @@ public class SortCFRTest extends TestCase
     private SortCFR s;
     private Race race1;
     private Race race2;
+    private Race race3;
 
     /**
      * Sets up intial test conditions.
@@ -34,6 +35,9 @@ public class SortCFRTest extends TestCase
         race2 = new Race("b");
         race2.setCases(20);
         race2.setDeaths(10);
+        race3 = new Race("c");
+        race3.setCases(20);
+        race3.setDeaths(10);
     }
 
 
@@ -44,6 +48,7 @@ public class SortCFRTest extends TestCase
     {
         assertEquals(1, s.compare(race1, race2));
         assertEquals(-1, s.compare(race2, race1));
+        assertEquals(-1, s.compare(race2, race3));
     }
 
 }
