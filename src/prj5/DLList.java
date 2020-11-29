@@ -113,7 +113,7 @@ public class DLList<E>
      * @param <A>
      *            The object to traverse.
      */
-    private class DLListIterator<A> implements Iterator<E>
+    public class DLListIterator<A> implements Iterator<E>
     {
         private Node<E> currentNode;
         private Node<E> previousNode;

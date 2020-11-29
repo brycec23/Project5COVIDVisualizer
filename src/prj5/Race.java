@@ -119,18 +119,29 @@ public class Race
 
 
     /**
-     * Returns a string representation of Race object.
+     * Returns a string representation of CFR, formatted to project guidelines.
      * 
-     * @return String representation of race.
+     * @return CFR as string.
      */
-    public String toString()
+    public String CFRToString()
     {
         String formattedCFR = String.valueOf(calcCFR());
         if (formattedCFR.substring(formattedCFR.length() - 2).equals(".0"))
         {
             formattedCFR = formattedCFR.replace(".0", "");
         }
-        return (name + ": " + numCases + " cases, " + formattedCFR + "% CFR");
+        return formattedCFR;
+    }
+
+
+    /**
+     * Returns a string representation of Race object.
+     * 
+     * @return String representation of race.
+     */
+    public String toString()
+    {
+        return (name + ": " + numCases + " cases, " + CFRToString() + "% CFR");
     }
 
 

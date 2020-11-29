@@ -34,10 +34,18 @@ public class Input
      * @throws FileNotFoundException
      *             If file is not found;
      */
+    @SuppressWarnings("unused")
     public static void main(String[] args) throws FileNotFoundException
     {
-        @SuppressWarnings("unused")
-        FileReader f = new FileReader(args[0]);
+        if (args[0] != null)
+        {
+            FileReader f = new FileReader(args[0]);
+        }
+        else
+        {
+            FileReader f = new FileReader(
+                "Cases_and_Deaths_by_race_CRDT_Sep2020.csv");
+        }
 
     }
 

@@ -30,12 +30,12 @@ public class FileReader
      * @throws FileNotFoundException
      *             if file is not found.
      */
+    @SuppressWarnings("unused")
     public FileReader(String fileName) throws FileNotFoundException
     {
         data = readFile(fileName);
         printToConsole();
-        // @SuppressWarnings("unused")
-        // GUIWindow w = new GUIWindow(data);
+        GUIWindow w = new GUIWindow(data);
     }
 
 
